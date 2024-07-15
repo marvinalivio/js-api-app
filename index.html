@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>js-api-app</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/fetchData.js" defer></script>
-    <script src="js/script.js" defer></script>  
-    <script src="js/search.js" defer></script>
-    <script src="js/filter.js" defer></script>
+
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <header>
@@ -42,46 +40,60 @@
                 </section>
                 </main>
             </header>
-<main>
+<main id="logInPage">
 
-<section id="hero"> 
+<section id="hero"> </section>
+<section id="searchItem">
+    <div class="searchInput">
+    <div class="searchFiled">
+    <input type="text" id="searchInput" placeholder="Enter search term">
+    <button onclick="performSearch()" class="searchBtn">Search</button>
+    </div>
+    <p id="iconCartAppend"></p>
+    </div>
+    <div id="results"></div>
 </section>
-<section id="searchItem"></section>
+
 <section id="bestSellerId">
     <h2>Best Seller</h2>
-    <div id="featuredItem"></div></div>
+    <div id="featuredItem" class="gridClass"></div>
+</div>
 </section>
 <section class="womenItem">
     <h2>Women's clothing</h2>
     <div id="femaleProduct" class="gridClass"></div>
 </section>
-</main>
 
-    <input type="text" id="searchInput" placeholder="Enter search term">
-    <button onclick="performSearch()">Search</button>
-    <div id="results"></div>
-
-
+<section id="allProduct">
+    <h2>All Product</h2>
     <div id="productName" class="product">
     </div>
-    <!-- <div class="product">
-        <h2>Product 2</h2>
-        <p>$15.00</p>
-        <button onclick="addToCart('Product 2', 15)">Add to Cart</button>
-    </div> -->
     <div id="paginationControls">
         <button id="prevPage" >Previous</button>
         <button id="nextPage" >Next</button>
     </div>
+</section>
 
-
+<section id="shoppingCart">
+     <div id="iconCart"></div>
+     <p id="cartTotal"></p>
     <h2>Shopping Cart</h2>
     <div id="cart">
+       
         <p>Your cart is empty.</p>
     </div>
-    <a href="#" id="mensItem">Men's</a>
-    <a href="#" id="womensItem">women's</a>
-    <div id="categoryPage"></div>
+</section>
+
+
+
+</main>
+
+    
+
+
+    
+
+
 <footer>
             <main>
                 <section id="form" class="flex">

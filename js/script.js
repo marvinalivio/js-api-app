@@ -6,12 +6,14 @@ const getProduct = document.querySelector('#productName');
             // let annoyingThis = prodName.replace(/'/g, " ");
             // console.log(annoyingThis);
             const html = `
-               <div class="product">
+               <div class="productAll">
                <img src="${data.image}" class="prodImage" alt="${data.title}"/>
-                <h2>${data.title}</h2>
+               <div>
+                <h4>${data.title}</h4>
                 <p class="description">${data.description}</p>
                 <p>Php ${data.price}</p>
                 <button onclick="addToCart(${data.id}, ${data.price}, '${data.title.replace(/'/g, " ")}')" class="addToCart">Add to Cart</button>
+                </div>
                 </div>
             `;  
             getProduct.insertAdjacentHTML("beforeend", html);
@@ -287,6 +289,18 @@ function addToCart(productName, productPrice, titleData) {
     displayCart();
 }
 
+function deleteFromCart(productName) {
+    // Find the index of the product in the cart
+    const productIndex = cart.findIndex(item => item.id === productName);
+    if (productIndex > -1) {
+        // If the product exists, remove it from the cart
+        cart.splice(productIndex, 1);
+    };
+    // Update the cart display
+    displayCart();
+}
+
+
 function displayCart() {
     const cartContainer = document.getElementById('cart');
     cartContainer.innerHTML = ''; // Clear the current cart display
@@ -296,26 +310,28 @@ function displayCart() {
     } else {
         const cartList = document.createElement('ul');
         const iconCart = document.querySelector('#iconCart');
-        let cartIcon = [];
-       
+        let totalQuantity = 0;
 
         cart.forEach(item => {
             const cartItem = document.createElement('li');
-            const thisCart = [];
             cartItem.textContent = `${item.title} - Php${item.price} x ${item.quantity} = ${item.totalPrice.toFixed(2)}`;
-            thisCart.textContent = `${item.quantity}`;
-            let totalCart = thisCart;
+
+            // Add a delete button for each item
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Remove';
+            deleteButton.onclick = () => deleteFromCart(item.id);
+
+            cartItem.appendChild(deleteButton);
             cartList.appendChild(cartItem);
-            cartIcon = totalCart;
+
+            totalQuantity += item.quantity;
         });
-        const iconsnum = cartIcon.textContent
-        iconCart.innerHTML = `<img src='images/shopping_cart.svg'/> <p>${iconsnum}</p> <a href='#shoppingCart' class='shopLink'>Shopping Cart</a>`;
-        console.log(cartIcon.textContent)
-        
 
         cartContainer.appendChild(cartList);
+        iconCart.innerHTML = `<img src='images/shopping_cart.svg'/> <p>${totalQuantity}</p> <a href='#shoppingCart' class='shopLink'>Shopping Cart</a>`;
     }
 };
+
 
 
 const iconCartAppend = document.querySelector('#iconCartAppend');

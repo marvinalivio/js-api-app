@@ -635,7 +635,7 @@ div#cart li {
     padding: 10px;
 }
 .chat-container {
-    max-width: 450px;
+    max-width: 329px;
     width: 100%;
     border: 1px solid #2ad0d6;
     padding: 15px;
@@ -645,10 +645,10 @@ div#cart li {
     right: 0;
     background: rgba(255 255 255 / 95%);
     transition: .5s;
-    margin-bottom: -210px;
+    margin-right: -330px;
 }
 .chat-container.showChatBox {
-    margin-bottom:0;
+    margin-right:3px;
 }
 .chat-container input {
     font-size: 16px;
@@ -671,9 +671,12 @@ button#send-btn {
     position: absolute;
     width: 80px;
     border-radius: 30px;
-    right: 0;
-    top: -87px;
+    left: -88px;
+    top: 96px;
     cursor: pointer;
+}
+.chat-container.showChatBox h4 {
+    top: 0px;
 }
 .chat-container h4:before {
     content: "";
@@ -685,7 +688,6 @@ button#send-btn {
     border-top: 0px solid transparent;
     border-right: 19px solid #1ad3e1;
     border-bottom: 26px solid transparent;
-    transform: rotateY(180deg);
 }
 /* medium */
 
